@@ -1,0 +1,45 @@
+/* Navbar section */
+.nav-margin{
+
+   
+    font-weight: 600;
+}
+
+/* End of navbar */
+
+
+/*products section  */
+
+.pro-margin{
+
+    margin-top: 0.5%;
+}
+
+/* End of products */
+
+
+
+/* Log in page */
+
+.login{
+
+    width: 30%;
+     margin-left: auto; 
+     margin-right: auto;
+     border: solid 1px gray;
+     margin-top: 6%;
+}
+
+
+    
+    
+}
+
+
+
+
+
+
+
+
+/* End of login page */
