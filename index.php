@@ -22,7 +22,7 @@ include("html/DBcon.php");
     <meta name="theme-color" content="#FFE1C4">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- PWA file -->
+    <!-- PWA file --> 
     
     <link rel="manifest" href="/manifest.json">
     <!-- IOS Support -->
@@ -94,60 +94,7 @@ include("html/DBcon.php");
 
         }
 
-        .chatbot {
-
-            width: 100%;
-            height: 100%;
-
-
-            position: absolute;
-            top: 130px;
-            right: 0;
-            
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            display: none;
-
-
-        }
-
-
-        .chatbot-content {
-
-            width: 300px;
-            height: 400px;
-            background-color: blanchedalmond;
-            padding-top: 30px;
-            border-radius: 25px;
-            position: relative;
-
-        }
-
-        .chatbot-icon {
-            width: 10px;
-            height: 10px;
-            border-radius: 50px;
-
-
-            position: absolute;
-            bottom: 60px;
-            right: 60px;
-
-
-
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            display: flex;
-             padding: 0px;
-            
-
-
-
-        }
-
+       
         .ccloose {
             position: absolute;
             top: 7px;
@@ -202,6 +149,25 @@ include("html/DBcon.php");
         .footer-content {
 
             background-color: #F7F7F9;
+        }
+        
+               @media only screen and (max-width: 1023px) {
+            .simplepic {
+                position: relative;
+                top: 100px;
+            }
+
+            .tit {
+                position: relative;
+                top: 90px;
+
+            }
+
+            .contall {
+                position: relative;
+                top: 55px;
+
+            }
         }
     </style>
 
@@ -309,12 +275,12 @@ include("html/DBcon.php");
                 <!-- this is a simple picture -->
 
                 <div>
-                    <img src="image/bg-image.png" class="image-fluid" style="width: 100%;" alt="just pic">
+                    <img src="image/bg-image.png" class="image-fluid simplepic" style="width: 100%;" alt="just pic">
                 </div>
                 <!-- end simple picture -->
 
 
-
+ 
 
 
                 <!--Section products -->
@@ -327,7 +293,7 @@ include("html/DBcon.php");
                     <div class="container-fluid">
                         <!-- title -->
                         <div class="row">
-                            <div class="col text-center mb-3">
+                            <div class="col tit text-center mb-3">
                                 <h2 class="display-4 text-warning">Our Products</h2>
                                 <p class="lead text-dark">Your satisfaction is our goal.</p>
 
@@ -336,7 +302,7 @@ include("html/DBcon.php");
                         <!-- End of title -->
 
 
-                        <div class="row">
+                        <div class="row contall">
                             <!-- First card -->
 
                             <!-- for fetching data from database and search functionality -->
@@ -486,7 +452,7 @@ include("html/DBcon.php");
 
 
 
-                                                    <a href="popup_func.php?pid=<?php echo $row['p_id']; ?>" class="btn btn-sm btn-outline-success float-right">More</a>
+                                                   
 
 
 
@@ -675,6 +641,7 @@ include("html/DBcon.php");
 
 
                 <!-- Section skills -->
+                
 
                 <section class="p-5 bg-light">
                     <div class="container-fluid">
@@ -849,140 +816,16 @@ include("html/DBcon.php");
 
 
 
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4 chatbot">
-                        <!--start code-->
-                        <div class="card chatbot-content">
-                            <div class="card-body messages-box">
-                                <ul class="list-unstyled messages-list">
-                                    <?php
-							$res=mysqli_query($con,"select * from");
-							if(mysqli_num_rows($res)>0){
-								$html='';
-								while($row=mysqli_fetch_assoc($res)){
-									$message=$row['message'];
-									$added_on=$row['added_on'];
-									$strtotime=strtotime($added_on);
-									$time=date('h:i A',$strtotime);
-									$type=$row['type'];
-									if($type=='user'){
-										$class="messages-me";
-										$imgAvatar="user_avatar.png";
-										$name="Me";
-									}else{
-										$class="messages-you";
-										$imgAvatar="bot_avatar.jpg";
-										$name="Chatbot";
-									}
-									$html.='<li class="'.$class.' clearfix"><span class="message-img"><img src="image/'.$imgAvatar.'" class="avatar-sm style="width:40px;" rounded-circle"></span><div class="message-body clearfix"><div class="message-header"><strong class="messages-title">'.$name.'</strong> <small class="time-messages text-muted"> <span class="minutes">'.$time.'</span></small> </div><p class="messages-p">'.$message.'</p></div></li>';
-								}
-								echo $html;
-							}else{
-                                echo $html;
-								?>
-                                    <li class="messages-me clearfix start_chat">
-                                        <img src="image/bot_avatar.gif" style="width:70px;" class="avatar-sm rounded-circle"> Hello, How can i Help You?
-                                    </li>
-                                    <?php
-							}
-							?>
-
-                                </ul>
-                            </div>
-                            <div class="card-header">
-                                <div class="input-group">
-                                    <input id="input-me" type="text" name="messages" class="form-control input-sm" placeholder="Type your message here..." />
-                                    <span class="input-group-append">
-                                        <input type="button" id="snd-btn" class="btn btn-info" value="Send" onclick="send_msg()">
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="ccloose">
-
-
-                                <button type="submit" id="close-chb" class="close" aria-label="Close" name="cloosee">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-
-                            </div>
-                        </div>
-                        <!--end code-->
-                    </div>
-                </div>
-
-            </div>
+    
+                        
         </div>
+    
     </div>
 
-    <!-- script for chatbot -->
-    <script type="text/javascript">
-        function getCurrentTime() {
-            var now = new Date();
-            var hh = now.getHours();
-            var min = now.getMinutes();
-            var ampm = (hh >= 12) ? 'PM' : 'AM';
-            hh = hh % 12;
-            hh = hh ? hh : 12;
-            hh = hh < 10 ? '0' + hh : hh;
-            min = min < 10 ? '0' + min : min;
-            var time = hh + ":" + min + " " + ampm;
-            return time;
-        }
-
-        function send_msg() {
-            jQuery('.start_chat').hide();
-            var txt = jQuery('#input-me').val();
-            var html = '<li class="messages-me clearfix"><span class="message-img"><img src="image/user_avatar.gif" class="avatar-sm rounded-circle" style="width:60px;"></span><div class="message-body clearfix"><div class="message-header"><strong class="messages-title">Me</strong> <small class="time-messages text-muted"> <span class="minutes">' + getCurrentTime() + '</span></small> </div><p class="messages-p">' + txt + '</p></div></li>';
-            jQuery('.messages-list').append(html);
-            jQuery('#input-me').val('');
-            if (txt) {
-                jQuery.ajax({
-                    url: 'get_bot_message.php',
-                    type: 'post',
-                    data: 'txt=' + txt,
-                    success: function(result) {
-                        var html = '<li class="messages-you clearfix"><span class="message-img"><img src="image/bot_avatar.gif" class="avatar-sm rounded-circle" style="width:60px;"></span><div class="message-body clearfix"><div class="message-header"><strong class="messages-title">Chatbot</strong> <small class="time-messages text-muted"> <span class="minutes">' + getCurrentTime() + '</span></small> </div><p class="messages-p">' + result + '</p></div></li>';
-                        jQuery('.messages-list').append(html);
-                        jQuery('.messages-box').scrollTop(jQuery('.messages-box')[0].scrollHeight);
-                    }
-                });
-            }
-        }
-        $(document).ready(function() {
-            $('#input-me').keypress(function(e) {
-                if (e.keyCode == 13)
-                    $('#snd-btn').click();
-            });
-        });
-    </script>
-
-    <div class="chatbot-icon">
-        <div class="ci">
-
-            <button type="submit" id="chb-icon" name="chatbot_icon" class="btn rounded-circle" style=" margin:0px; padding:0px;"><img src="image/chb%20gif.gif" style="width:50px; height:50px;" class="avatar-sm rounded-circle"> </button>
 
 
+ 
 
-        </div>
-    </div>
-
-    <script>
-        document.getElementById('chb-icon').onclick = function() {
-
-
-            document.querySelector('.chatbot').style.display = 'flex';
-            document.querySelector('.chatbot-icon').style.display = 'none';
-
-        }
-        document.getElementById('close-chb').onclick = function() {
-
-
-            document.querySelector('.chatbot').style.display = 'none';
-            document.querySelector('.chatbot-icon').style.display = 'flex';
-
-        }
-    </script>
     </div>
     </div>
 

@@ -218,6 +218,14 @@ if(!isset($_SESSION['login'])) {
                    }
     
     ?>
+                 <li class="dropdown">
+                    <a href="" data-toggle="dropdown" class="dropdown-toggle"><img class="icons" src="../image/icons/report-glyph.jpg"> Reports <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="reporteduser.php"> Reported User</a></li>
+                        <li><a href="reportedproduct.php"> Reported Product</a> </li>
+
+                    </ul>
+                </li>
                 <li>
                     <a href="feedback.php"><img class="icons" src="../image/icons/feedback.png"> Feedback</a>
                 </li>
@@ -377,7 +385,10 @@ if(!isset($_SESSION['login'])) {
      $approved = "approved";
      $get_pro = " select p.p_id, p.name as pname, p.image, p.description, p.price, p.weight, p.location, u.name as uname, u.email from product as p join usert as u
                   on p.u_email = u.email
-                  where p.status != '$approved' ";
+                  where p.status != '$approved'
+                  and
+                  u.status = 'Active'
+                  ";
 
      $run_pro = mysqli_query($con, $get_pro);
                                

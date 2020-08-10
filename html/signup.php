@@ -192,7 +192,7 @@ error_reporting(0);
                                                         <input type="password" name="password" id="s_pass" placeholder="Create Password" class="form-control mt-3"></td>
                                                     <td></td>
                                                 </tr>
-                                                <tr>
+                                                <tr> 
 
                                                     <td>
                                                         <label for="s_lastname">Confirm Password*</label><br>
@@ -274,7 +274,7 @@ if($num >= 1){
                                             $mail->SMTPSecure='tls';
 
                                             $mail->Username='ftvm.market@gmail.com';
-                                            $mail->Password='FTVM@2233';
+                                            $mail->Password='ftvm@2232';
 
                                             $mail->setFrom('ftvm.market@gmail.com', 'Farmer & Trader virtual market');
                                             $mail->addAddress($email);

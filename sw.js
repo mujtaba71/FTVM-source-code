@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static';
-const dynamicCacheName = 'site-dynamic-v1';
+ const staticCacheName = 'site-static';
+const dynamicCacheName = 'site-dynamic';
 const assets = [
     '/',
     '/index.php',
@@ -72,7 +72,6 @@ self.addEventListener('fetch', evt => {
                 return fetchRes;
             })
         });
-        
         
     }).catch(() => {
         if(evt.request.url.indexOf('.php') > -1){

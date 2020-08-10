@@ -2,10 +2,14 @@
 session_start();
 error_reporting(0);
 
+if(!isset($_SESSION['login'])) {
+    header('location:login.php');
+}
+
 ?>
 
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -35,7 +39,7 @@ error_reporting(0);
     <script src="../js/all.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <title>Feedback</title>
+    <title>Reported Products</title>
 
     <style>
         .sidebar-footer {
@@ -51,6 +55,7 @@ error_reporting(0);
             height: 30px;
             line-height: 30px;
             position: relative;
+
         }
 
         .sidebar-footer>a .notification {
@@ -110,7 +115,7 @@ error_reporting(0);
         }
     </style>
 
-    <!-- dropup styles -->
+    <!-- dropups -->
 
     <style>
         .dropbtn {
@@ -159,11 +164,12 @@ error_reporting(0);
     </style>
 
 
+
 </head>
 
 <body>
 
-   <?php
+    <?php
     include('../html/DBcon.php');
                 
                 $d = "select count(note) from notification where type = 'deal' or type = 'new'";
@@ -202,19 +208,17 @@ error_reporting(0);
 
                     </ul>
                 </li>
-                    <?php
+                <?php
     include('../html/DBcon.php');
                 
-                $dd = "select count(note), note, id from notification where type = 'feedback'";
+                $dd = "select count(note), note from notification where type = 'feedback'";
                     $rre = mysqli_query($con,$dd);
                    while($rrw = mysqli_fetch_array($rre)) {
                     $_SESSION['coutfdbck'] = $rrw['count(note)'];
                     $_SESSION['fdbcknote'] = $rrw['note'];
-                    $_SESSION['fdbckid'] = $rrw['id'];
                    }
     
     ?>
-               
                  <li class="dropdown">
                     <a href="" data-toggle="dropdown" class="dropdown-toggle"><img class="icons" src="../image/icons/report-glyph.jpg"> Reports <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -226,23 +230,19 @@ error_reporting(0);
                 <li>
                     <a href="feedback.php"><img class="icons" src="../image/icons/feedback.png"> Feedback</a>
                 </li>
-              
+
 
             </ul>
             <div class="sidebar-footer">
 
 
-
-
-
-
-
                 <div class="dropup">
                     <button class="dropbtn"> <a href="#">
                             <i class="fa fa-bell"></i>
-                            <span class="badge badge-pill badge-warning notification"><?php echo $_SESSION['cout']; ?></span>
+                            <span class="badge badge-pill badge-warning notification"><?php echo $_SESSION['cout']  ?></span>
                         </a></button>
                     <div class="dropup-content">
+
                         <?php
                 
                 include('../html/DBcon.php');
@@ -298,22 +298,24 @@ error_reporting(0);
                 }
                 }
 
-    ?> </div>
+    ?>
+
+
+                    </div>
                 </div>
 
-               
                 <div class="dropup">
                     <button class="dropbtn"> <a href="#">
                             <i class="fa fa-envelope"></i>
                             <span class="badge badge-pill badge-success notification"><?php echo $_SESSION['coutfdbck']; ?></span>
                         </a></button>
                     <div class="dropup-content">
-                       
-                       <a href="feedback.php?fdbckid=<?php echo $_SESSION['fdbckid']; ?>"><small><?php echo $_SESSION['fdbcknote']; ?></small></a>
-                        
+
+                        <a href="users.php?fdbckid=<?php echo $_SESSION['fdbckid']; ?>"><small><?php echo $_SESSION['fdbcknote']; ?></small></a>
+
                     </div>
                 </div>
-                
+
                 <?php
                 
                       
@@ -326,15 +328,15 @@ error_reporting(0);
                             echo "<script type='text/javascript'> document.location = 'feedback.php'; </script>";
                     }
                 ?>
-                  
-                         <a href="profile.php">
+                <a href="profile.php">
                     <i class="fa fa-cog"></i>
 
                 </a>
 
-                    <a href="feedback.php?logout">
+
+                <a href="users.php?logout">
                     <i class="fa fa-power-off"></i>
-                 <?php
+                    <?php
                 if(isset($_GET['logout'])) {
                     unset ($_SESSION["login"]);
                     header('location:login.php');
@@ -342,174 +344,147 @@ error_reporting(0);
                 
                 ?>
                 </a>
-                
-               
-
-
-
-
 
 
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
-        <style>
-            .d1 {
 
-                width: 240px;
-                margin-right: 21px
-            }
-
-            .imgicon {
-                background-color: #dda6dd;
-                border-radius: 10%;
-
-            }
-
-            .imgicon2 {
-                background-color: #9b9b17;
-                border-radius: 10%;
-
-            }
-
-            .imgicon3 {
-                background-color: #585252;
-                border-radius: 10%;
-
-            }
-
-            .imgicon4 {
-                background-color: skyblue;
-                border-radius: 10%;
-
-            }
-
-            .tn {
-                align-content: center;
-                align-items: center;
-                text-align: center;
-                top: 20px;
-            }
-            .table {
-               
-                
-                
-                border: none;
-            }
-            .tp {
-                position: absolute;
-                left: 270px;
-                border: 1px solid black;
-                width: 480px;
-                height: 540px;
-                overflow-x: hidden;
-                
-            }
-            .w {
-               
-                position: relative;
-                right: 10px;
-                
-            }
-            .clear {
-                text-align: right;
-                
-            }
-            .conttab {
-                height: 10px;
-            }
-            .dltbtn {
-                position: relative;
-                left: 380px;
-            }
-        </style>
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+
                         <a href="#menu-toggle" id="menu-toggle"><img src="../image/interface.png" style="width:30px; height: 30px;"> </a>
-                        <h3>Feedback</h3>
-                        <hr>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                  
-                                   <div class="table-responsive table-borderless tp ">
-                            <table class="table   table-sm">
+                        <h3>Reported Product</h3>
+                        <p> </p>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-sm">
                                 <thead>
+                                    <tr>
+                                        <th>#</th>
+
+                                        <th>Image</th>
+
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>weight</th>
+                                        <th>Price</th>
+                                        <th>Farmer email</th>
+                                        <th>Report Reason</th>
+
+
+
+                                        <th>Action</th>
+                                    </tr>
                                 </thead>
-                                      <tbody>
-                                         <?php
-                                          include('../html/DBcon.php');
-                                          $fd = "select * from feedback";
-                                          $fr = mysqli_query($con,$fd);
-                                          while($fl= mysqli_fetch_array($fr)){
-                                          
-                                          ?>
-                                         
-                                        
-                                         
-                                              <tr>
-                                              <td style=""><textarea cols="60" rows="5" disabled><?php echo $fl['subject'] ?> </textarea> </td>
-                                              
-                                          </tr>
-                                         
-                                           <tr style="height:30px;">
-                                              <td>Sent by: <small><?php echo $fl['name'] ?></small></td>
-                                              
-                                              
-                                          </tr>
-                                          <tr style="height:30px;">
-                                              <td><small><?php echo $fl['email'] ?></small></td>
-                                              
-                                              
-                                          </tr>
-                                          
-                                           <tr>
-                                              <td class="dltbtn"><a href="feedback.php?dltid=<?php echo $fl['id']; ?>" style="background-color:maroon; color:white;" class="btn">Delete</a> </td>
-                                              
-                                              
-                                          </tr>
-                                          
-                                          
-                                           <tr>
-                                             
-                                              <td>
-                                                
-                                                  <hr>
-                                              </td>
-                                          </tr>
-                                         
-                                          
-                                          
-                                          <?php
-                                          }
-                                          
-                                          if(isset($_GET['dltid'])) {
-                                              
-                                              include('../html/DBcon.php');
-                                              
-                                              $dltque = "delete from feedback where id = '$_GET[dltid]'";
-                                              mysqli_query($con, $dltque);
-                                              echo "<script type='text/javascript'> document.location = 'feedback.php'; </script>";
-                                              
-                                          }
-                                          
-                                          
-                                          ?>
-                                      </tbody>
-                                       </table>
-                                    </div>
-                                    
-                                   
-                                </div>
+                                <?php
+                                
+                        
+     
+     include("../html/DBcon.php");
+
+     
+   
+     $get_pro = " select * from report as r join product as p
+     on r.pid = p.p_id
+     where r.reported = 'product' 
+     ";
+
+     $run_pro = mysqli_query($con, $get_pro);
+
+     $number = 1;
+
+     while($row_pro = mysqli_fetch_array($run_pro)){
+             
+            
+         
+         
+         
+  
+         
+         
+    
 
 
-                            </div>
+     ?>
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo $number ?></td>
+
+                                        <td><img src="../<?php echo $row_pro['image'] ?>" style="width:100px;height:100px;"> </td>
+
+                                        <td><?php echo $row_pro['name']  ?></td>
+                                        <td style="max-width:200px"><?php echo $row_pro['description'] ?></td>
+                                        <td><?php echo $row_pro['weight'] ?></td>
+                                        <td><?php echo $row_pro['price'] ?></td>
+                                        <td><?php echo $row_pro['u_email'] ?></td>
+                                        <td><?php echo $row_pro['reason'] ?></td>
+
+
+
+
+                                        <td>
+                                            <a href="reportedproduct.php?reject=<?php echo $row_pro['pid']?>"><i class="fas fa-trash-alt" style="color:red"></i> </a>
+                                            <a href="reportedproduct.php.php?accept=<?php echo $row_pro['id']?>"><img class="icons" src="../image/icons/tick%20mark.jpg" style="height:20px;width:20px"> </a>
+
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                                <?php 
+         $number++;
+     }
+            ?>
+                            </table>
                         </div>
 
+                        <?php
+                        include("../html/DBcon.php");
+                        
+                          if(isset($_GET['accept'])) {
+                            
+                            
+                             $a = " delete from report where id = '$_GET[accept]'";
+                             mysqli_query($con, $a);
+                            
+                             
+                              
+                              
+                              
+                              
+                             echo "<script type='text/javascript'> document.location = 'reportedproduct.php'; </script>";
+                        }
+                        elseif(isset($_GET['reject'])) {
+                            
+                           
+                            
+                            
+                            
+                            $a = " delete from product where p_id = '$_GET[reject]'";
+                             mysqli_query($con, $a);
+                            
+                             $b = " delete from report where pid = '$_GET[reject]'";
+                             mysqli_query($con, $b);
+                            
+                             
+                              
+                              
+                              
+                              
+                             echo "<script type='text/javascript'> document.location = 'reportedproduct.php'; </script>";
+                            
+                            
+                            
+                            
+                        }
+                        
+                        ?>
 
                     </div>
                 </div>
@@ -519,9 +494,6 @@ error_reporting(0);
 
     </div>
     <!-- /#wrapper -->
-
-
-
 
     <script>
         $("#menu-toggle").click(function(e) {

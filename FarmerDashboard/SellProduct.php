@@ -17,14 +17,14 @@ if(!isset($_SESSION['userlogin'])){
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 
     <link rel="icon" href="../image/LogoSample_ByTailorBrands%20(1).jpg" type="image/png">
-    
-    
+
+
     <link rel="manifest" href="../manifest.json">
-      <!-- IOS Support -->
+    <!-- IOS Support -->
     <link rel="apple-touch-icon" href="../image/logo1.png">
     <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
-    
-    
+
+
     <!-- style css -->
     <link rel="stylesheet" href="../css/style.css">
 
@@ -139,7 +139,7 @@ if(!isset($_SESSION['userlogin'])){
 
 
 
-                        
+
                         <li class="nav-item side"><a class="nav-link text-success text-uppercase side  px-3" href="html/about.php">About US</a></li>
 
 
@@ -167,7 +167,7 @@ if(!isset($_SESSION['userlogin'])){
                 <div class="row">
 
                     <div class="col-lg-12">
-                     <h3>Sell Product</h3>
+                        <h3>Sell Product</h3>
                         <hr>
 
                         <div class="table-responsive-sm">
@@ -187,9 +187,11 @@ if(!isset($_SESSION['userlogin'])){
                             
      
 
-     $get_pro = " SELECT b_id, b.p_id,image,weight,price from product as p join bids as b 
-     on p.p_id = b.p_id 
+     $get_pro = " SELECT b_id, b.p_id,image,weight,price,p.u_email from product as p join bids as b 
+     on p.p_id = b.p_id
+     
      where  p.date < now()
+     and p.u_email = '$uemail'
      GROUP BY b.p_id
      
      
@@ -238,7 +240,8 @@ if(!isset($_SESSION['userlogin'])){
          
          
          $s_id = $row_pro['p_id'];
-         $get_p = " SELECT inserted_bid from bids 
+         $get_p = " SELECT inserted_bid, address, area, city, province from bids join usert
+         on bids.u_email = usert.email 
          where p_id = $s_id
          ORDER BY inserted_bid DESC";
 
@@ -250,7 +253,15 @@ if(!isset($_SESSION['userlogin'])){
 
 
 
-                                                    <option value="<?php echo $row_p['inserted_bid']?>"><?php echo $row_p['inserted_bid']?></option>
+                                                    <option value="<?php echo $row_p['inserted_bid']?>"><?php echo $row_p['inserted_bid']?>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <p>Address:</p>
+                                                    <a href=""><?php echo $row_p['address']. ' ' .$row_p['area']. ' ' .$row_p['city']. ' ' .$row_p['province']; ?></a>
+
+                                                    </option>
+                                                    
+
 
 
 
@@ -418,7 +429,7 @@ if(!isset($_SESSION['userlogin'])){
     </footer>
 
 
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
 </body>

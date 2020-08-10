@@ -1,146 +1,329 @@
 <?php
 error_reporting(0);
 session_start();
-if(!isset($_SESSION['userlogin'])){
-    header('location:../../html/login.php');
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- FTVM Logo -->
-    <link rel="icon" href="../../image/LogoSample_ByTailorBrands (1).jpg" type="image/png">
-    
-    
-    <link rel="manifest" href="../../manifest.json">
-      <!-- IOS Support -->
-    <link rel="apple-touch-icon" href="../../image/logo1.png">
-    <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="Style.css">
 
-    <!-- bootstrap link -->
-    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link rel="icon" href="image/LogoSample_ByTailorBrands (1).jpg" type="image/png">
+    <!-- style css -->
+
+
+    <link rel="stylesheet" href="../../fontawesome-free-5.12.1-web/css/all.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link href="chatbot/style.css" rel="stylesheet">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
     <!-- font awesome -->
-    <script src="../../fontawesome-free-5.12.1-web/js/all.js"></script>
-    <title>User Profile</title>
+    <script src="js.js"></script>
+    <script src="../../js/all.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <title></title>
 
     <style>
-        
-     
-                                      html,
-        body {
-            height: 100%;
-            background-color: white;
-        }
-
-        body {
-            display: table;
+        .sidebar-footer {
+            position: absolute;
             width: 100%;
+            bottom: 0;
+            display: flex;
         }
 
-
-
-        .page-row {
-            display: table-row;
-            height: 1px;
-        }
-
-        .page-row-expanded {
-            height: 100%;
-        }
-
-        /* general styles for the template
- * Note that these are applied to div's inside the sticky footer div's
- */
-
-
-
-
-        /* footer styling */
-        .footer-content {
-
-            background-color: #F7F7F9;
+        .sidebar-footer>a {
+            flex-grow: 1;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
             position: relative;
-            top: 150px;
-
         }
-        .content {
 
+        .sidebar-footer>a .notification {
+            position: absolute;
+            top: 0;
+        }
+
+        .badge-pill {
+
+            height: 18x;
+            width: 18px;
             position: relative;
-            top: 140px;
+            right: 8px;
+            bottom: 7px;
+
+
+        }
+
+        .badge-sonar {
+            display: inline-block;
+            background: #980303;
+            border-radius: 50%;
+            height: 8px;
+            width: 8px;
+            position: absolute;
+            top: 25px;
+            left: 60px;
+
+        }
+
+        .icons {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
         }
 
 
 
-        .card {
+        .dropdown:hover .dropdown-menu,
+        .btn-group:hover .dropdown-menu {
+            display: block;
+            background-color: #2f2a2a;
 
-            height: 400px;
+        }
+
+        .dropdown-menu {
+            margin-top: 0;
+        }
+
+        .dropdown-toggle {
+            margin-bottom: 2px;
+        }
+
+        .navbar .dropdown-toggle,
+        .nav-tabs .dropdown-toggle {
+            margin-bottom: 0;
+        }
+    </style>
+
+    <!-- dropup styles -->
+
+    <style>
+        .dropbtn {
+            background-color: black;
+
 
             border: none;
-
         }
 
-        .top {
+        .dropup {
             position: relative;
-            top: 170px;
-            background-color: #efefef;
-            height: 550px;
+            display: inline-block;
+            padding-right: 50px;
+        }
+
+        .dropup-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+
+            z-index: 1;
+            bottom: 30px;
 
         }
 
-        .top1 {
-            position: relative;
-            top: 170px;
-            background-color: #efefef;
-            height: 250px;
-            margin-left: 10px;
-
+        .dropup-content a {
+            color: black;
+            padding: 3px 3px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px dashed black;
         }
 
-        font {
-            position: relative;
-            left: 140px;
-            top: 100px;
+        .dropup-content a:hover {
+            background-color: #ccc
         }
-        
-     
+
+        .dropup:hover .dropup-content {
+            display: block;
+        }
+
+        .dropup:hover .dropbtn {
+            background-color: black;
+        }
+
+        .image-upload>input {
+            display: none;
+        }
+
+        .image-upload img {
+            width: 80px;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 140px;
+            left: 130px;
+        }
+
+        .ppic {
+            padding-top: 10px;
+            padding-left: 20px;
+
+
+        }
     </style>
+
+
 </head>
 
 <body>
-  <div class="page-row page-row-expanded">
-     <div class="container-fluid">
-    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top ">
 
-        <a href="../Farmer_dashboard.php" class="navbar-brand">
-            <img src="../../image/LogoSample_ByTailorBrands (1).jpg" width="100px" height="100px" alt="Logo image" class="rounded-circle ">
-        </a>
-
-        <button type="button" class="navbar-toggler text-success" data-toggle="collapse" data-target="#nav">
-            <span class="navbar-toggler-icon "></span></button>
-
-        <div class="collapse navbar-collapse justify-conten-between" id="nav">
-
-            <ul class="navbar-nav">
-                <li class="nav-item side"><a class="nav-link text-success text-uppercase  px-3" href="#feedback">FEEDBACK</a></li>
+   
+    <div id="wrapper">
 
 
-                <!--  <li class="nav-item"><a class="nav-link text-success text-uppercase  px-3" href="html/add_product.php">add product</a> 
-                </li>-->
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+
+            <ul class="sidebar-nav">
+
+                <!-- <li class="sidebar-brand">
+
+                </li>
+                -->
 
 
 
-                <li class="nav-item side"><a class="nav-link text-success text-uppercase  px-3" href="html/contact.php">Contact</a></li>
-                <li class="nav-item side"><a class="nav-link text-success text-uppercase side  px-3" href="html/about.php">About US</a></li>
+                <div class="ppic">
+                    <li>
+                        <form action="" id="form" name="form" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                            <div class="image-upload">
+                                <label for="image">
+                                    <img src="../../../../image/upload.png" />
+                                </label>
 
+                                <input id="image" type="file" name="file" onchange="func();" />
+                                <input type="submit" name="sbt">
+
+                            </div>
+
+
+                                           <?php
+    include("../../html/DBcon.php");
+                            
+                            $condition = $_SESSION['email'];
+    
+    
+        if ( ! isset($_POST['file'])) {
+            // not submitted yet
+?>
+    <script>
+        function func() {
+
+
+
+            this.form.submit();
+        }
+    </script>
+
+    <?php
+         
+        
+        $file = $_FILES['file']['name'];
+        $fname = $_FILES["file"]["tmp_name"];
+        $folder = 'image/'.$file;
+       
+        move_uploaded_file($fname, $folder);
+        $sql = "update usert set image = '$folder' where email = '$condition' ";
+            if(!empty($file)){
+        mysqli_query($con,$sql);
+          
+            }
+        
+        
+    }
+                            
+    $query = "select * from usert where email = '$condition' ";
+    $resarr = mysqli_query($con,$query);
+    while($arr1 = mysqli_fetch_array($resarr)) {
+   
+                            
+        
+    
+    
+ 
+    
+    
+    ?>
+
+
+
+                        </form>
+                        <img src="<?php echo $arr1['image']; ?>" class="rounded-circle" style="width:130px; height:130px;">
+<?php
+         
+    }
+        ?>
+                    </li>
+                </div>
+                
+
+
+                <div>
+                    <li>
+                        <a href=""> <strong>Manage profile</strong> </a>
+                    </li>
+                    <li>
+                        <a href="myprofile.php" style="color: #afafff">My profile</a>
+                    </li>
+                    <li>
+                        <a href="addressbook.php" style="color: #afafff">Address Book</a>
+                    </li>
+                </div>
+                <div>
+                    <li>
+                        <a href=""> <strong>Sellings</strong> </a>
+                    </li>
+                    <li>
+                        <a href="../SellProduct.php" style="color: #afafff">Ready to sell</a>
+                    </li>
+                    <li>
+                        <a href="soldp.php" style="color: #afafff">Sold</a>
+                    </li>
+                    <li>
+                </div>
+                <div>
+                    <li>
+                        <a href=""> <strong>Purchaces</strong> </a>
+                    </li>
+                    <li>
+                        <a href="../biddingList.php" style="color: #afafff">Bids</a>
+                    </li>
+                    <li>
+                        <a href="ownedbids.php" style="color: #afafff">Owned Bids</a>
+                    </li>
+                    <li>
+                </div>
+
+                <!--
+                <li class="dropdown">
+                    <a href="" data-toggle="dropdown" class="dropdown-toggle"><img class="icons" src="../../image/icons/product.png"> Products <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="newproducts.php">New</a></li>
+                        <li><a href="readytosell.php">Ready to Sell </a></li>
+
+                    </ul>
+                </li> -->
 
 
 
 
             </ul>
+            <div class="sidebar-footer">
 
 
 
@@ -148,255 +331,213 @@ if(!isset($_SESSION['userlogin'])){
 
 
 
-        </div>
-    </nav>
+                <div class="dropup">
+                    <button class="dropbtn"> <a href="#">
+                            <i class="fa fa-bell"></i>
+                            <span class="badge badge-pill badge-warning notification"></span>
+                        </a></button>
+                    <div class="dropup-content">
 
 
-    <div class="container-fluid content">
-
-        <div class="row">
-            <div class="col-lg-2">
-
-                <div class="table-responsive-sm">
-                    <table class="table table-borderless">
-                        <thead>
-
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="col"><img src="<?php echo$_SESSION['profileimg']; ?>" class="rounded-circle" style="width:150px; height:150px;"></th>
-                            </tr>
-                            <tr class="h">
-                                <td>
-                                    Hello,<small>
-                                        <?php
-                                     $name = $_SESSION['uname'];
-                                     $lname = $_SESSION['l_uname'];
-                    
-                                     echo $name.' '.$lname;
-                                    
-                                    ?>
-                                    </small>
+                        <a href=""></a>
 
 
 
-                                </td>
-                            </tr>
-                            <tr class="h">
-                                <th scope="col"><a href="userprofile.php" style="color:black;">Manage Profile</a></th>
-
-                            </tr>
-                            <tr class="h">
-                                <td><a href="myprofile.php">My Profile</a></td>
-                            </tr>
-                            <tr class="h">
-                                <td><a href="addressbook.php">Address Book</a></td>
-                            </tr>
-                            <tr class="h">
-                                <th scope="col">Selling</th>
-                            </tr>
-                            <tr class="h">
-                                <td><a href="../SellProduct.php">Ready to Sell</a></td>
-                            </tr>
-                            <tr class="h">
-                                <td><a href="soldp.php">Sold</a></td>
-                            </tr>
-                            <tr class="h">
-                                <th scope="col">Buying</th>
-                            </tr>
-                            <tr class="h">
-                                <td><a href="../biddingList.php">Bids</a></td>
-                            </tr>
-                            <tr class="h">
-                                <td><a href="owe
-                                ">Owned Bid</a></td>
-                            </tr>
-
-
-
-                        </tbody>
-                    </table>
-
-
-
-                </div>
-            </div>
-            <font size="5">Address Book</font>
-
-            <div class="col-lg-8 top">
-                       <?php
-            
-               include('../../html/DBcon.php');
-        $email = $_SESSION['email'];
-    
-      $res = mysqli_query($con,"select * from usert where email = '$email'");
-                                
-                
-                  
-                while($row = mysqli_fetch_array($res)){
-            
-            ?>
-                <div class="container-fluid">
-                   <form method="get">
-                        <div class="row">
-                        <div class="col-lg-6">
-                           
-                            <div class="table-responsive-sm">
-                                <table class="table table-borderless">
-                                    <thead>
-
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group">
-                                                    <label for="usr">Full Name:</label>
-                                                    <input type="text" class="form-control" value="<?php
-                                     $name = $_SESSION['uname'];
-                                     $lname = $_SESSION['l_uname'];
-                    
-                                     echo $name.' '.$lname;
-                                    
-                                    ?>" style="width:250px;">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group">
-                                                    <label for="usr">Phone Number:</label>
-                                                    <input type="tel" name="phone" class="form-control" value="<?php echo $row['phone_no'] ?>" style="width:250px;" required>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-
-                            </div>
-                            
-                
-
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="table-responsive-sm">
-                                <table class="table table-borderless">
-                                    <thead>
-
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group">
-                                                    <label for="usr">Province:</label>
-                                                    <input type="text" name="pro" class="form-control" value="<?php echo $row['province'] ?>" style="width:250px;" required>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group">
-                                                    <label for="usr">City:</label>
-                                                    <input type="text" name="city" class="form-control" value="<?php echo $row['city'] ?>"  style="width:250px;" required>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group">
-                                                    <label for="usr">Area:</label>
-                                                    <input type="text" name="area" class="form-control" value="<?php echo $row['area'] ?>"  style="width:250px;" required>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group">
-                                                    <label for="usr">Address:</label>
-                                                    <input type="text" name="add" class="form-control" value="<?php echo $row['address'] ?>"  style="width:250px;" required>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><button name="sb" class="btn btn-info">Save Changes</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                            
-
-                        </div>
-                                    <?php
-                }
-                ?>
                     </div>
-                    </form>
+                </div>
+
+                <div class="dropup">
+                    <button class="dropbtn"> <a href="#">
+                            <i class="fa fa-envelope"></i>
+                            <span class="badge badge-pill badge-success notification"></span>
+                        </a></button>
+                    <div class="dropup-content">
+
+                        <a href=""></a>
+
+                    </div>
+
+
+
                 </div>
 
 
 
+
+
+
+
+
+                <a href="../Farmer_dashboard.php">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                </a>
+
+
+
+
+
+
             </div>
-
-
         </div>
-    </div>
-    <?php
+        <!-- /#sidebar-wrapper -->
+        <style>
+            .d1 {
+
+                width: 240px;
+                margin-right: 21px
+            }
+
+            .imgicon {
+                background-color: #dda6dd;
+                border-radius: 10%;
+
+            }
+
+            .imgicon2 {
+                background-color: #9b9b17;
+                border-radius: 10%;
+
+            }
+
+            .imgicon3 {
+                background-color: #585252;
+                border-radius: 10%;
+
+            }
+
+            .imgicon4 {
+                background-color: skyblue;
+                border-radius: 10%;
+
+            }
+
+            .tn {
+                align-content: center;
+                align-items: center;
+                text-align: center;
+                top: 20px;
+            }
+        </style>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <a href="#menu-toggle" id="menu-toggle"><img src="../../image/interface.png" style="width:30px; height: 30px;"> </a>
+                        <h3>Address Book</h3>
+                        <hr>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                   <form action="" method="get" enctype="multipart/form-data">
+                                    <div class="row">
+
+
+
+                                        <div class="col-lg-6 col-md-4 col-sm-4">
+                                            
+                                            <ul style="display: block; list-style: none;">
+
+                                                <li style="">
+                                                    <label for="">Province:</label><br>
+                                                    <input type="text" name="pro" id="fname" style="width: 100%">
+
+                                                </li>
+
+                                                <li style="">
+                                                    <label for="">City:</label><br>
+                                                    <input type="text" name="city" id="lname" style="width: 100%">
+
+                                                </li>
+
+                                                <li style="">
+                                                    <label for="">Area:</label><br>
+                                                    <input type="text" name="area" id="lname" style="width: 100%">
+
+                                                </li>
+                                                <li style="">
+                                                    <label for="">Address:</label><br>
+                                                    <input type="text" name="add" id="lname" style="width: 100%">
+
+                                                </li>
+
+                                            </ul>
+                                            
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-4 col-sm-6">
+                                            
+                                            <input type="submit" style="width: 100%; margin-top: 5px" class="btn btn-info st" name="sb" value="Save changes">
+                                        </div>
+                                    </div>
+                                   
+                                    
+                                    
+                                     <?php
     include('../../html/DBcon.php');
     
     if(isset($_GET['sb'])) {
-        $condition = $_SESSION['email'];
-        $phone = $_GET['phone'];
+       
+        
+        
         $prov = $_GET['pro'];
         $city = $_GET['city'];
         $area = $_GET['area'];
         $address = $_GET['add'];
         
         
-        $query = " UPDATE usert SET phone_no = '$phone', province = '$prov', city = '$city', area = '$area', address = '$address'
-        where email = '$condition'  ";
+        $condition = $_SESSION['email'];
+        $query = " UPDATE usert SET province = '$prov', city = '$city', area = '$area', address = '$address' where email = '$condition'
+       ";
         mysqli_query($con, $query);
         
     }
     
     ?>
-    
-      </div>
-    </div>
-    
-        <footer class="page-row">
-        <!-- note how spacing is applied via the 'template' class INSIDE the page-row -->
-        <div class="container-fluid footer-content template">
-
-            <!-- 3 columns using bootstrap grid -->
-            <div class="row">
+     </form>
+                                </div>
 
 
+                            </div>
+                        </div>
 
-                <div class="col-lg-6 offset-lg-3">
 
-                    <h2 class="text-black text-center  font-weight-light text-capitalize">Farmer and trader 's Virtual Market</h2>
-                    <p class="text-black text-center font-weight-light font-italic">Social media Links</p>
-                    <div class="my-4 text-center ">
-                        <a href="#"><i class="fab fa-facebook fa-2x text-primary mx-3"></i></a>
-                        <a href="#"><i class="fab fa-twitter fa-2x text-info mx-3"></i></a>
-                        <a href="#"><i class="fab fa-instagram fa-2x text-warning mx-3"></i></a>
-                        <a href="#"><i class="fab fa-youtube fa-2x text-danger mx-3"></i></a>
                     </div>
-
-                    <p class=" text-center text-black py-2 m-0">&copy;Copy right 2020</p>
                 </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
 
 
-            </div> <!-- end row -->
 
-        </div> <!-- end container -->
-    </footer>
-<script src="../../js/app.js"></script>
 
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".dropdown, .btn-group").hover(function() {
+                var dropdownMenu = $(this).children(".dropdown-menu");
+                if (dropdownMenu.is(":visible")) {
+                    dropdownMenu.parent().toggleClass("open");
+                }
+            });
+        });
+    </script>
+    <script src="../../js/all.js"></script>
 </body>
-
-
-
 
 </html>

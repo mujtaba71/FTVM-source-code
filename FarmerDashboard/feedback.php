@@ -2,7 +2,7 @@
 error_reporting(0);
 session_start();
 if(!isset($_SESSION['userlogin'])){
-    header('location:../html/login.php');
+    header('location:../html/login.php'); 
 }
 ?>
 <!DOCTYPE html>
@@ -192,7 +192,7 @@ if(!isset($_SESSION['userlogin'])){
                 $date = $array['current_date()'];
                 $time = $array['current_time()'];
                 }
-                $data = "insert into feedback(name, email, subject, cur_date ) values('$name', '$email', '$message', '$date') ";
+                $data = "insert into feedback(name, email, subject) values('$name', '$email', '$message') ";
                 mysqli_query($con,$data);
                 $type = "feedback";
                 $note = "Received feedback from $name";

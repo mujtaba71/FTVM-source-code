@@ -67,7 +67,7 @@ if(!isset($_SESSION['userlogin'])){
 
             background-color: #F7F7F9;
             position: relative;
-            top: 110px;
+            top: 150px;
 
         }
 
@@ -77,7 +77,7 @@ if(!isset($_SESSION['userlogin'])){
 
             position: relative;
             top: 120px;
-            left: 230px;
+            
             height: 100%;
 
 
@@ -154,7 +154,7 @@ if(!isset($_SESSION['userlogin'])){
 
     <div class="container content">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-lg-4 offset-lg-2 col-md-4 col-sm-4">
 
 
                 <?php

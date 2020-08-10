@@ -218,6 +218,16 @@ if(!isset($_SESSION['login'])) {
                    }
     
     ?>
+               
+                  <li class="dropdown">
+                    <a href="" data-toggle="dropdown" class="dropdown-toggle"><img class="icons" src="../image/icons/report-glyph.jpg"> Reports <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="reporteduser.php"> Reported User</a></li>
+                        <li><a href="reportedproduct.php"> Reported Product</a> </li>
+
+                    </ul>
+                </li>
+                
                 <li>
                     <a href="feedback.php"><img class="icons" src="../image/icons/feedback.png"> Feedback</a>
                 </li>
@@ -302,9 +312,22 @@ if(!isset($_SESSION['login'])) {
                             <span class="badge badge-pill badge-success notification"><?php echo $_SESSION['coutfdbck']; ?></span>
                         </a></button>
                     <div class="dropup-content">
-
-                        <a href="index.php?fdbckid=<?php echo $_SESSION['fdbckid']; ?>"><small><?php echo $_SESSION['fdbcknote']; ?></small></a>
-
+                        
+                           <?php
+    include('../html/DBcon.php');
+                
+                $dd = "select note from notification where type = 'feedback'";
+                    $rre = mysqli_query($con,$dd);
+                   while($rrw = mysqli_fetch_array($rre)) {
+                   
+                    $_SESSION['fdbcknote'] = $rrw['note'];
+    
+?>
+                        <a href="index.php?fdbckid=<?php echo $_SESSION['fdbckid']; ?>"><small><?php echo $rrw['note']; ?></small></a>
+<?php
+                                  }
+    
+    ?>
                     </div>
                      
                  

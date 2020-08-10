@@ -10,9 +10,6 @@ if(mysqli_num_rows($res)>0){
 }else{
 	$html="Sorry not be able to understand you";
 }
-$added_on=date('Y-m-d h:i:s');
-mysqli_query($con,"insert into message(message,added_on,type) values('$txt','$added_on','user')");
-$added_on=date('Y-m-d h:i:s');
-mysqli_query($con,"insert into message(message,added_on,type) values('$html','$added_on','bot')");
+
 echo $html;
 ?>

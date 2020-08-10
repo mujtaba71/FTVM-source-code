@@ -2,6 +2,9 @@
 error_reporting(0);
 session_start();
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +14,8 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="stylecht.css">
+    <link rel="stylesheet" href="style.css">
 
     <link rel="icon" href="image/LogoSample_ByTailorBrands (1).jpg" type="image/png">
     <!-- style css -->
@@ -197,7 +201,7 @@ session_start();
                 </li>
                 -->
 
-             <div class="ppic">
+                <div class="ppic">
                     <li>
                         <form action="" id="form" name="form" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
                             <div class="image-upload">
@@ -211,7 +215,7 @@ session_start();
                             </div>
 
 
-                                           <?php
+                            <?php
     include("../../html/DBcon.php");
                             $condition = $_SESSION['email'];
     
@@ -219,16 +223,16 @@ session_start();
         if ( ! isset($_POST['file'])) {
             // not submitted yet
 ?>
-    <script>
-        function func() {
+                            <script>
+                                function func() {
 
 
 
-            this.form.submit();
-        }
-    </script>
+                                    this.form.submit();
+                                }
+                            </script>
 
-    <?php
+                            <?php
          
         
         $file = $_FILES['file']['name'];
@@ -236,7 +240,7 @@ session_start();
         $folder = 'image/'.$file;
        
         move_uploaded_file($fname, $folder);
-        $sql = "update usert set image = '$folder' where email = '$condition'";
+        $sql = "update usert set image = '$folder' where email = '$condition' ";
             if(!empty($file)){
         mysqli_query($con,$sql);
           
@@ -244,7 +248,7 @@ session_start();
         
         
     }
-                            $condition = $_SESSION['email'];
+    $condition = $_SESSION['email'];
     $query = "select * from usert where email = '$condition' ";
     $resarr = mysqli_query($con,$query);
     while($arr1 = mysqli_fetch_array($resarr)) {
@@ -262,7 +266,7 @@ session_start();
 
                         </form>
                         <img src="<?php echo $arr1['image']; ?>" class="rounded-circle" style="width:130px; height:130px;">
-<?php
+                        <?php
          
     }
         ?>
@@ -361,9 +365,10 @@ session_start();
 
 
 
-              
 
-<a href="../Farmer_dashboard.php">
+
+
+                <a href="../Farmer_dashboard.php">
                     <i class="fa fa-home" aria-hidden="true"></i>
                 </a>
 
@@ -411,6 +416,25 @@ session_start();
                 align-items: center;
                 text-align: center;
                 top: 20px;
+
+            }
+
+            .avatar-sm {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+
+            .input-sm {
+                border-width: 0px;
+                border: none;
+
+            }
+            .btn-snd {
+                width: 80px;
+                position: relative;
+                bottom: 30px;
+                left: 20px;
             }
         </style>
 
@@ -418,125 +442,131 @@ session_start();
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-12">
                         <a href="#menu-toggle" id="menu-toggle"><img src="../../image/interface.png" style="width:30px; height: 30px;"> </a>
-                        <h3>Address Book</h3>
+                        <h3>Messanger</h3>
                         <hr>
-       
                         
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                   
-                                   
-                                                                <?php
-            
-               include('../../../../html/DBcon.php');
-        $condition = $_SESSION['email'];
-    
-      $res = mysqli_query($con,"select * from usert where email = '$condition'");
-                                
-                
-                  
-                while($row = mysqli_fetch_array($res)){
-            
-            ?>
-                                   
-                                   
-                                    <div class="row">
-                                       
-                                        <div class="col-lg-2 col-md-4 col-sm-4">
-                                           
-                                           
-                                           
-                                            <ul style="display: block; list-style: none;">
-                                                <li style="">
-                                                    <small>Full Name</small>
+                        <?php 
+                        
+                        include('../../html/DBcon.php');
+                        
+                        $receiver = "select * from product where p_id = '$_GET[pid]'";
+                        $res = mysqli_query($con, $receiver);
+                        $arr = mysqli_fetch_array($res);
+                        echo $arr['u_email'];
+                        
+                        ?>
+
+
+                        <div style="width: 100%; height: 100%">
+                            <div class="row justify-content-md-center">
+                                <div class="col-lg-8 col-md-8 col-sm-12">
+                                    <!--start code-->
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                    <div class="card" style="width: 100%; height: 100%">
+                                        <div class="card-header">
+                                            <div class="input-group">
+                                                <input id="input-me" type="text" name="useremail" value="<?php echo $arr['u_email']; ?>" class="form-control input-sm" placeholder="Reciptent" />
+                                                <span class="input-group-append">
+                                                    
+
+                                                    
+
+
+                                                </span>
+                                            </div>
+                                            <hr>
+                                            <div class="input-group">
+                                                <input id="input-me" type="text" name="subject" class="form-control input-sm" placeholder="Subject" />
+                                                <span class="input-group-append">
+
+
+
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body messages-box">
+                                            <ul class="list-unstyled messages-list">
+
+                                                <li class="messages-me clearfix start_chat">
+                                                    <textarea rows="8" style="width:100%" name="emailcontent"></textarea>
                                                 </li>
-                                                <li style="">
-                                                    <?php echo $row['name']. " " .$row['l_name']; ?>
-                                                </li>
+
 
                                             </ul>
                                         </div>
-                                        <div class="col-lg-2 col-md-4 col-sm-4">
-                                            <ul style="display: block; list-style: none;">
-                                                <li style="">
-                                                    <small>Address</small>
-                                                </li>
-                                                <li style="">
-                                                <?php echo $row['address']; ?>
-
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-2 col-md-4 col-sm-4">
-                                            <ul style="display: block; list-style: none;">
-                                                <li style="">
-                                                    <small>Reigon</small>
-                                                </li>
-                                                <li style="">
-                                              
-                                                <?php echo $row['province']. "-" .$row['city']. "-" .$row['area'] ?>
-
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                           <div class="col-lg-2 col-md-4 col-sm-4">
-                                            <ul style="display: block; list-style: none;">
-                                                <li style="">
-                                                    <small>Phone number</small>
-                                                </li>
-                                                <li style="">
-                                                <?php echo $row['phone_no']; ?>
-
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                               <div class="col-lg-4 col-md-6 col-sm-8">
-                                            <ul style="display: block; list-style: none;">
-                                                <li style="">
-                                                    <small></small>
-                                                </li>
-                                                <li style="">
-                                                <small><b>Default Shipping Address</b><br>
-                                                <?php echo $row['province']. "-" .$row['city']. "-" .$row['area']. "-" .$row['address'] ?>
-
-                            <br><b>Default Billing Address</b> <br>
-                                               <?php echo $row['province']. "-" .$row['city']. "-" .$row['area']. "-" .$row['address'] ?>
-                                                </small>
-
-                                                </li>
-
-                                            </ul>
-                                        </div>
-
-
+                                        <input type="submit" name="snd_btn" id="snd-btn" class="btn btn-snd btn-info" value="Send" onclick="send_msg()">
 
                                     </div>
+                                    </form>
                                     
-                                    <?php } ?>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-4 col-sm-6">
-                                              <a href="address.php" style="width: 100%; margin-top: 5px" class="btn btn-info st">EDIT</a>
-                                        </div>
-                                    </div>
+                                    <?php 
+                                    
+                                    if(isset($_POST['snd_btn'])) {
+                                        $email = $_POST['useremail'];
+                                        $subject = $_POST['subject'];
+                                        $emailcontent = $_POST['emailcontent'];
+                                        $sentby = $_SESSION['email'];
+                                        
+                                                       
+                                           
+                                            require 'phpmailer/PHPMailerAutoload.php';
+                                            $mail = new PHPMailer;
+                                            $mail->isSMTP();
+
+                                            $mail->Host='smtp.gmail.com';
+                                            $mail->Port=587;
+                                            $mail->SMTPAuth=true;
+                                            $mail->SMTPSecure='tls';
+
+                                            $mail->Username='ftvm.market@gmail.com';
+                                            $mail->Password='ftvm@2232';
+
+                                            $mail->setFrom('ftvm.market@gmail.com', 'Farmer & Trader virtual market');
+                                            $mail->addAddress($email);
+                                           
+
+                                            $mail->isHTML(true);
+                                            $mail->Subject=$subject;
+                                            $mail->Body='<p>' .$emailcontent. '<p><br><br><h3></h3><h4>sent by: '.$sentby.'</h4>';
+
+                                            if(!$mail->send()){
+                                                echo "error";
+                                            }
+                                            else{
+                                                
+                                            }
+                                           
+                                          
+                                        
+                                    }
+                                    
+                                    ?>
+                                    <!--end code-->
+
+                                    
                                 </div>
-
-
                             </div>
-                        </div>
 
+                        </div>
 
                     </div>
                 </div>
+
+
+
+
+
+
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
+
+
+
+    </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 
     </div>
     <!-- /#wrapper -->

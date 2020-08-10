@@ -219,6 +219,14 @@ if(!isset($_SESSION['login'])) {
                    }
     
     ?>
+                 <li class="dropdown">
+                    <a href="" data-toggle="dropdown" class="dropdown-toggle"><img class="icons" src="../image/icons/report-glyph.jpg"> Reports <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="reporteduser.php"> Reported User</a></li>
+                        <li><a href="reportedproduct.php"> Reported Product</a> </li>
+
+                    </ul>
+                </li>
                 <li>
                     <a href="feedback.php"><img class="icons" src="../image/icons/feedback.png"> Feedback</a>
                 </li>

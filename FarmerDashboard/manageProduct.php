@@ -9,7 +9,7 @@ if(!isset($_SESSION['userlogin'])){
 
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,6 +79,18 @@ if(!isset($_SESSION['userlogin'])){
         }
         
         
+        @media only screen and (max-width: 1023px) {
+            .table-responsive-sm{
+                max-width: 320px;
+                overflow-x: scroll;
+            }
+            
+            .footer-content{
+                position: relative;
+                top: 140px;
+            }
+        
+        }
         
         
         
@@ -237,7 +249,7 @@ if(!isset($_SESSION['userlogin'])){
 
 
 
-                <div class="col-lg-6 offset-lg-3">
+                <div class="col-lg-6 offset-lg col-sm-6 offset-sm-3">
 
                     <h2 class="text-black text-center  font-weight-light text-capitalize">Farmer and trader 's Virtual Market</h2>
                     <p class="text-black text-center font-weight-light font-italic">Social media Links</p>

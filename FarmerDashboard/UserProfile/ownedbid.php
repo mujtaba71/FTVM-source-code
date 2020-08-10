@@ -19,7 +19,7 @@ if(!isset($_SESSION['userlogin'])){
     
     
     <link rel="manifest" href="../../manifest.json">
-      <!-- IOS Support -->
+      <!-- IOS Support --> 
     <link rel="apple-touch-icon" href="../../image/logo1.png">
     <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
     
@@ -222,7 +222,7 @@ if(!isset($_SESSION['userlogin'])){
                                                 <img class="card-img-top" src="<?php echo $ro['image'] ?>" alt="Card image" style=" height:150px;">
                                                 <div class="card-body">
                                                     <h5 class="card-title"><?php echo $ro['name']. " " .$ro['l_name'] ?></h5>
-                                                    
+                                                    <a href="profile.php?seller=<?php echo $ro['id']; ?>">See Profile</a>
                                                     
                                                 </div>
                                             </div>

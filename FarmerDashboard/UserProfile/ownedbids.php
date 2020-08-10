@@ -2,7 +2,6 @@
 error_reporting(0);
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +17,7 @@ session_start();
     <!-- style css -->
 
 
-    <link rel="stylesheet" href="../../fontawesome-free-5.12.1-web/css/all.css">
+    <link rel="stylesheet" href="../../fontawesome-free-5.12.1-web/css/all.css"> 
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <link href="chatbot/style.css" rel="stylesheet">
@@ -36,7 +35,7 @@ session_start();
     <title></title>
 
     <style>
-        .sidebar-footer {
+        .sidebar-footer { 
             position: absolute;
             width: 100%;
             bottom: 0;
@@ -125,7 +124,7 @@ session_start();
         }
 
         .dropup-content {
-            display: none;
+            display: none; 
             position: absolute;
             background-color: #f1f1f1;
             min-width: 160px;
@@ -198,7 +197,7 @@ session_start();
                 </li>
                 -->
 
-                <div class="ppic">
+            <div class="ppic">
                     <li>
                         <form action="" id="form" name="form" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
                             <div class="image-upload">
@@ -212,7 +211,7 @@ session_start();
                             </div>
 
 
-                            <?php
+                                           <?php
     include("../../html/DBcon.php");
                             $condition = $_SESSION['email'];
     
@@ -220,16 +219,16 @@ session_start();
         if ( ! isset($_POST['file'])) {
             // not submitted yet
 ?>
-                            <script>
-                                function func() {
+    <script>
+        function func() {
 
 
 
-                                    this.form.submit();
-                                }
-                            </script>
+            this.form.submit();
+        }
+    </script>
 
-                            <?php
+    <?php
          
         
         $file = $_FILES['file']['name'];
@@ -263,7 +262,7 @@ session_start();
 
                         </form>
                         <img src="<?php echo $arr1['image']; ?>" class="rounded-circle" style="width:130px; height:130px;">
-                        <?php
+<?php
          
     }
         ?>
@@ -362,11 +361,13 @@ session_start();
 
 
 
+              
 
 
-                <a href="../Farmer_dashboard.php">
+               <a href="../Farmer_dashboard.php">
                     <i class="fa fa-home" aria-hidden="true"></i>
                 </a>
+
 
 
 
@@ -420,31 +421,32 @@ session_start();
                 <div class="row">
                     <div class="col-lg-12">
                         <a href="#menu-toggle" id="menu-toggle"><img src="../../image/interface.png" style="width:30px; height: 30px;"> </a>
-                        <h3>Sold Products</h3>
+                        <h3>Owned Bids</h3>
                         <hr>
                         <div class="container-fluid">
                             <div class="row">
+                            
+                            
+                            
+                             <div class="table-responsive">
+                            <table class="table table-striped table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        
+                                        <th>Image</th>
+                                        
+
+                                        <th>Seller</th>
+                                        <th>Product Name</th>
+                                        <th>Actual Price</th>
+                                        <th>Purchased Price</th>
 
 
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-
-                                                <th>Image</th>
-
-
-                                                <th>Buyer</th>
-                                                <th>Name</th>
-                                                <th>Price</th>
-                                                <th>Sold Price</th>
-
-
-                                                <th>Deal status</th>
-                                            </tr>
-                                        </thead>
-                                        <?php
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <?php
                                 
                         
      
@@ -454,7 +456,7 @@ session_start();
      $status = "approved";
      $get_pro = " select * from sold_product as sp join product as p
                   on sp.p_id = p.p_id
-                  where p.u_email = '$email' 
+                  where sp.b_email = '$email' 
                   and sp.status = '$status' ";
 
      $run_pro = mysqli_query($con, $get_pro);
@@ -462,7 +464,7 @@ session_start();
      $number = 1;
 
      while($row_pro = mysqli_fetch_array($run_pro)){
-         $em = $row_pro['b_email'];
+         $em = $row_pro['u_email'];
          
           
      $gp = " select * from usert where email = '$em';  ";
@@ -477,34 +479,34 @@ session_start();
 
 
      ?>
-                                        <tbody>
-                                            <tr>
-                                                <td>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            
+                                            <?php echo $number ?></td>
+                                        
+                                        <td><img src="../../../../<?php echo $row_pro['image'] ?>" style="width:200px; height:200px"> </td>
+                                        
 
-                                                    <?php echo $number ?></td>
+                                        <td>
+                                            <div class="card" style="width:200px; height:200px;">
+                                                <img class="card-img-top" src="<?php echo $ro['image'] ?>" alt="Card image" style=" height:120px; width:200px; border-radius:50%">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><?php echo $ro['name']. " " .$ro['l_name'] ?></h5>
+                                                    <a href="profile.php?seller=<?php echo $ro['id']; ?>">See Profile</a>
+                                                    
+                                                </div>
+                                            </div>
 
-                                                <td><img src="../../../../<?php echo $row_pro['image'] ?>" style="width:200px; height:200px"> </td>
+                                        </td>
+                                       
+     
 
-
-                                                <td>
-                                                    <div class="card" style="width:200px; height:200px;">
-                                                        <img class="card-img-top" src="<?php echo $ro['image'] ?>" alt="Card image" style=" height:120px; width:200px; border-radius:50%">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title"><?php echo $ro['name']. " " .$ro['l_name'] ?></h5>
-
-                                                            <a href="profile.php?seller=<?php echo $ro['id']; ?>">See Profile</a>
-                                                        </div>
-                                                    </div>
-
-                                                </td>
-                                                <?php
-     }?>
-
-                                                <td><?php echo $row_pro['name'] ?></td>
-                                                <td><?php echo $row_pro['price'] ?></td>
-                                                <td><?php echo $row_pro['selected_bid'] ?></td>
-                                               <?php $seller = $row_pro['seller']; 
-          if($seller == "done") {
+                                        <td><?php echo $row_pro['name'] ?></td>
+                                        <td><?php echo $row_pro['price'] ?></td>
+                                        <td><?php echo $row_pro['selected_bid'] ?></td>
+                                        <?php $buyer = $row_pro['buyer']; 
+          if($buyer == "done") {
               
                  ?>
 
@@ -530,31 +532,32 @@ session_start();
                                             
          }
              
-                                            ?>
+                                            ?> </td>
 
-                                                </td>
+                                    </tr>
 
-                                            </tr>
+                                </tbody>
 
-                                        </tbody>
-
-                                        <?php 
+                                <?php 
          $number++;
-     }
-                                        if(isset($_GET['done'])) {
+     } }
+                               
+                                if(isset($_GET['done'])) {
                                             
                                             include('../../html/DBcon.php');
                                             $done = "done";
                                             $id = $_GET['done'];
-                                            $querydone = "update sold_product set seller = '$done' where sold_id = '$id'; ";
+                                            $querydone = "update sold_product set buyer = '$done' where sold_id = '$id'; ";
                                             mysqli_query($con, $querydone);
                                         }
+                                
+                                
             ?>
-                                    </table>
-                                </div>
-
-
-                                <style>
+                            </table>
+                        </div>
+                         
+                         
+                               <style>
                                     .bg-model2 {
 
                                         width: 100%;
@@ -705,7 +708,7 @@ session_start();
 
                                     </div>
                                 </div>
-                                <script>
+<script>
                                     function report() {
 
                                         document.querySelector('.bg-model2').style.display = 'flex';
@@ -723,8 +726,6 @@ session_start();
 
                                     }
                                 </script>
-
-
 
 
                             </div>

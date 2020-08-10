@@ -18,12 +18,12 @@ if(!isset($_SESSION['userlogin'])){
     <!-- bootstrap link -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link href="../chatbot/style.css" rel="stylesheet">
-    
+
     <link rel="manifest" href="../manifest.json">
-      <!-- IOS Support -->
+    <!-- IOS Support -->
     <link rel="apple-touch-icon" href="image/logo1.png">
     <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
-    
+
     <!-- font awesome -->
     <script src="../fontawesome-free-5.12.1-web/js/all.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -41,7 +41,9 @@ if(!isset($_SESSION['userlogin'])){
             width: 100%;
         }
 
+    
 
+   
 
         .page-row {
             display: table-row;
@@ -65,8 +67,10 @@ if(!isset($_SESSION['userlogin'])){
             background-color: #F7F7F9;
             position: relative;
             top: 100px;
+            height: 0px;
 
         }
+        
 
         .bg-model {
 
@@ -77,6 +81,8 @@ if(!isset($_SESSION['userlogin'])){
             opacity: 0.9;
             position: absolute;
             top: 60px;
+            right: 5px;
+            left: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -88,8 +94,7 @@ if(!isset($_SESSION['userlogin'])){
 
         .model-content {
 
-            width: 800px;
-            height: 500px;
+
             background-color: white;
             padding-top: 30px;
             border-radius: 25px;
@@ -145,7 +150,7 @@ if(!isset($_SESSION['userlogin'])){
 
 
 
-    .chatbot {
+        .chatbot {
 
             width: 100%;
             height: 100%;
@@ -154,7 +159,8 @@ if(!isset($_SESSION['userlogin'])){
             position: absolute;
             top: 130px;
             right: 0;
-            
+
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -170,8 +176,10 @@ if(!isset($_SESSION['userlogin'])){
             height: 400px;
             background-color: blanchedalmond;
             padding-top: 30px;
+
             border-radius: 25px;
             position: relative;
+
 
         }
 
@@ -205,6 +213,45 @@ if(!isset($_SESSION['userlogin'])){
 
 
         }
+        
+            @media only screen and (max-width: 1023px) {
+            .simplepic {
+                position: relative;
+                top: 100px;
+            }
+                 .tit {
+                position: relative;
+                top: 90px;
+
+            }
+                   .contall {
+                position: relative;
+                top: 55px; 
+
+            }
+            
+               .footer-content {
+                position: relative;
+                height: 50px;
+
+            }
+        
+                 .sbtn {
+                position: relative;
+                left: 0px;
+                
+                
+
+            }
+                .rtbtns {
+                     position: relative;
+                left: 0px;
+                }
+            nav {
+                position: relative;
+              
+            }
+        }
     </style>
 </head>
 
@@ -213,7 +260,7 @@ if(!isset($_SESSION['userlogin'])){
 
     <div class="page-row page-row-expanded">
         <div class="container-fluid">
-           
+
             <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top ">
 
                 <a href="Farmer_dashboard.php" class="navbar-brand">
@@ -272,7 +319,7 @@ if(!isset($_SESSION['userlogin'])){
                     <form action="Farmer_dashboard.php" method="get" class="form-inline ml-3 mr-3">
 
                         <div class="input-group text-success sbtn">
-                            <input type=" text" name="search" style="width:25s0px;" placeholder="Search" class="form-control  border-success">
+                            <input type=" text" name="search"  placeholder="Search" class="form-control  border-success">
 
 
 
@@ -294,8 +341,8 @@ if(!isset($_SESSION['userlogin'])){
 
                             <li class="nav-item"><a class="nav-link text-success  px-3 mr-md-2 " href="feedback.php">FEEDBACK</a>
                             </li>
-                         
-                            
+
+
                             <li class="nav-item"><a class="nav-link text-success   px-3 mr-md-2" href="about.php">ABOUT</a>
                             </li>
 
@@ -316,7 +363,7 @@ if(!isset($_SESSION['userlogin'])){
 
                                     <li class="nav-item"> <a href="UserProfile/userprofile.php" class="nav-link text-success">PROFILE</a></li>
                                     <li class="nav-item"> <a href="Farmer_dashboard.php?lgout=" class="nav-link text-success">LOG OUT</a></li>
-                                 <?php
+                                    <?php
                                     if(isset($_GET['lgout'])) {
                                       
                            
@@ -328,16 +375,16 @@ if(!isset($_SESSION['userlogin'])){
                                     
                                     ?>
                                 </div>
-                           
+
                             </div>
-                            
-                         
+
+
 
                         </ul>
                     </div>
                 </div>
-                
-                  
+
+
 
                 <!--End of list items -->
 
@@ -350,7 +397,9 @@ if(!isset($_SESSION['userlogin'])){
 
 
             <!--Section products -->
-
+            <div class="simplepic">
+                <img src="../image/bg-image.png" class="image-fluid" style="width: 100%;" alt="just pic">
+            </div>
 
             <section class="p-sm-5  bg-light   pro-margin">
 
@@ -359,8 +408,8 @@ if(!isset($_SESSION['userlogin'])){
                 <div class="container-fluid ourp">
                     <!-- title -->
                     <div class="row">
-                        <div class="col text-center mb-3">
-                            <h2 class="display-4 text-warning">Our Products</h2>
+                        <div class="col tit text-center mb-3">
+                            <h3 class="display-4 text-warning">Our Products</h3>
                             <p class="lead text-dark">Your satisfaction is our goal.</p>
 
                         </div>
@@ -368,7 +417,7 @@ if(!isset($_SESSION['userlogin'])){
                     <!-- End of title -->
 
 
-                    <div class="row">
+                    <div class="row contall">
                         <!-- First card -->
 
 
@@ -480,7 +529,7 @@ include("../html/DBcon.php");
                                 <div class="card-body">
                                     <div class="card-title mb-5">
 
-                                      
+
 
 
                                         <h4 class=" text-center text-muted">
@@ -574,7 +623,7 @@ include("../html/DBcon.php");
                                 <div class="card-body">
                                     <div class="card-title mb-5">
 
-                                     
+
 
 
                                         <h4 class=" text-center text-muted">
@@ -638,72 +687,85 @@ include("../html/DBcon.php");
 
 
 
-<div class="container-fluid">
-    
-    
-                        <div class="bg-model">
-                            <div class="model-content">
+                        <div class="container-fluid">
 
 
-                                <div class="table-responsive-sm">
+                            <div class="bg-model">
+                                <div class="model-content col-lg-8 col-md-8 col-sm-8">
 
-                                    <table class="table table-borderless">
 
-                                        <?php
+                                    <div class="table-responsive-sm">
+
+                                        <table class="table table-borderless">
+
+                                            <?php
                 include('../html/DBcon.php');
                 
                 $res = mysqli_query($con,"select * from product where p_id = '$_GET[pid]'");
                                 
                 
                   
-                while($row = mysqli_fetch_array($res))
+                while($row = mysqli_fetch_array($res)) 
                 {
                  
                     
                                 
                                 ?>
 
-                                        <tr>
-                                            <td style="width:400px"><img src="../html/<?php echo $row["image"]; ?>" style="width:400px"> </td>
-                                            <td>
-
-                                                <p><strong>Description:</strong> <?php echo $row["description"]; ?> </p>
-                                                <p><strong>Weight:</strong> <?php echo $row["weight"]; ?> KG</p>
-                                                <p><strong>Starting Bid:</strong> <?php echo $row["price"]; ?> Af</p>
-
-                                                <form action="placebid.php" method="post" enctype="multipart/form-data">
-                                                    <input type="number" class="form-control" style="width: 218px;" name="bid_value" placeholder="Insert Bid" required>
-                                                    <button type="submit" class="btn btn-success" name="pb">Place Bid</button>
+                                            <tr>
 
 
-                                                    <button type="submit" class="btn btn-dark" name="adc"><i class="fa fa-shopping-cart" style="color:red"></i>Add to Cart</button>
-                                                    <?php
+                                                <td style="width:400px"><img src="../html/<?php echo $row["image"]; ?>" style="width:400px"> </td>
+
+
+
+                                                <td>
+
+                                                    <p><strong>Description:</strong> <?php echo $row["description"]; ?> </p>
+                                                    <p><strong>Weight:</strong> <?php echo $row["weight"]; ?> KG</p>
+                                                    <p><strong>Starting Bid:</strong> <?php echo $row["price"]; ?> Af</p>
+                                                    <a href="UserProfile/messages.php?pid=<?php echo $row['p_id']; ?>">Contact supplier</a>
+
+                                                    <form action="placebid.php" method="post" enctype="multipart/form-data">
+                                                        <input type="number" class="form-control" style="width: 297px;" name="bid_value" placeholder="Insert Bid" required>
+                                                        <button type="submit" class="btn btn-success" name="pb">Place Bid</button>
+
+
+                                                        <button type="submit" class="btn btn-dark" name="adc"><i class="fa fa-shopping-cart" style="color:red"></i>Add to Cart</button>
+
+                                                        <button type="submit" class="btn" style="background-color:maroon; color:white" onclick="report()" name="adc">Report </button>
+
+
+
+                                                        <img src="../image/cash-on-delivery.jpg" style="width: 297px; height:90px">
+                                                        <?php
                                             function abc() {
                                                 ?>
-                                                    <script>
-                                                        alert("added!");
-                                                    </script>
-                                                    <?php
+                                                        <script>
+                                                            alert("added!");
+                                                        </script>
+                                                        <?php
                                             }
                                             
                                             $_SESSION["pid"] = $row['p_id'];
                                             
                     
                                             ?>
-                                                </form>
-                                            </td>
+                                                    </form>
 
-                                        </tr>
+                                                </td>
+
+                                            </tr>
 
 
-                                        <?php               
+                                            <?php               
                                 
                              }
                              
                                                    
                                 ?>
 
-                                        
+
                                             <div class="close">
 
 
@@ -716,7 +778,6 @@ include("../html/DBcon.php");
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                        
 
 
 
@@ -727,17 +788,17 @@ include("../html/DBcon.php");
 
 
 
-                                    </table>
+                                        </table>
+
+
+                                    </div>
+
+
 
 
                                 </div>
-
-
-
-
                             </div>
                         </div>
-</div>
 
 
 
@@ -760,13 +821,13 @@ include("../html/DBcon.php");
                 }    ?>
 
 
-             
+
 
                         <script>
                             document.getElementById('closebtn').onclick = function() {
 
 
-                                
+
                                 document.querySelector('.bg-model').style.display = 'none';
 
                             }
@@ -812,15 +873,179 @@ include("../html/DBcon.php");
 
             </section>
             <!-- End of product Section -->
+            <style>
+                .bg-model2 {
+
+                    width: 100%;
+                    height: 100%;
+                    background-color: black;
+                    opacity: 0.9;
+
+                    position: absolute;
+                    top: 60px;
+                    right: 5px;
+                    left: 5px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: fixed;
+                    display: none;
+
+                }
+
+
+                .model-content2 {
+
+
+                    background-color: #ffffff;
+                    padding-top: 30px;
+                    border-radius: 25px;
+                    height: 70%;
+                    position: relative;
+                }
+
+                .cancel {
+                    position: relative;
+                    bottom: 0px;
+                    right: 0px;
+                    top: 35px;
+
+                }
+
+                .canok {
+                    width: 80px;
+                    height: 40px;
+                }
+
+                .reason {
+                    display: none;
+                }
+
+                .here {
+                    background-color: dimgrey;
+                    height: 70px;
+                }
+
+                .pa {
+                    top: 5px;
+                    bottom: 5px;
+                }
+            </style>
+
+            <!-- report section -->
+            <div class="bg-model2">
+                <div class="model-content2 col-lg-6 col-md-6 col-sm-6">
+
+
+
+                    <div class="here">
+                        <h3>Report Product</h3>
+                    </div>
+
+                    <p class="pa">Reason to Report this Product</p>
+
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <ul style="display: block; list-style: none;">
+                            <li style="">
+                                <input type="radio" name="repo" value="Invalid Details"> <label>Invalid Details</label>
+                            </li>
+                            <li style="">
+                                <input type="radio" name="repo" value="Invalid Email"> <label>Invalid Email</label>
+                            </li>
+                            <li style="">
+                                <input type="radio" name="repo" value="Fake Image"> <label>Fake Image</label>
+                            </li>
+                            <li style="">
+                                <input type="radio" name="repo" value="Spam"> <label>Spam</label>
+                            </li>
+                            <li style="">
+                                <input type="radio" name="repo" onclick="document.querySelector('.reason').style.display = 'flex'; " value="Other"> <label>Other</label>
+                            </li>
+                            <li style="">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+
+                                    <textarea style=" width:100%;" name="reason" class="reason" id="reason"></textarea>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="col-lg-4 offset-lg-8  cancel">
+                                    <button type="submit" class="btn canok" onclick="cancel()">Cancel</button>
+                                    <button type="submit" class="btn btn-primary canok" name="rok">Ok</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                    <?php 
+                    
+                    include('../html/DBcon.php');
+                    if(isset($_POST['rok'])) {
+                       $reason = $_POST['repo'];
+                        $reppid = $_GET['pid'];
+                        echo $reason;
+                         $reasonm = $_POST['reason'];
+                        if($reason != "Other"){
+                            
+                           
+                            
+                            $repque = "insert into report(pid,reason,reported) values('$reppid', '$reason','product')";
+                            mysqli_query($con, $repque);
+                            
+                               ?>
+                    <script>
+                        alert("Reported!");
+                    </script>
+
+                    <?php 
+                        }
+                        else {
+                             $repque = "insert into report(pid,reason,reported) values('$reppid', '$reasonm','product')";
+                            mysqli_query($con, $repque);
+                            
+                            ?>
+                    <script>
+                        alert("Reported!");
+                    </script>
+
+                    <?php 
+                        }
+                      
+                    }
+                    
+                    
+                    
+                    
+                    
+                    ?>
 
 
 
 
+                </div>
+            </div>
+
+            <script>
+                function report() {
+
+                    document.querySelector('.bg-model2').style.display = 'flex';
+                    document.querySelector('.bg-model').style.display = 'none';
+
+
+                }
+
+                function cancel() {
+                    document.querySelector('.bg-model2').style.display = 'none';
+                }
+
+                function reason() {
+
+
+                }
+            </script>
 
 
 
-
-             <div class="container-fluid">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-4 chatbot">
                         <!--start code-->
@@ -828,7 +1053,7 @@ include("../html/DBcon.php");
                             <div class="card-body messages-box">
                                 <ul class="list-unstyled messages-list">
                                     <?php
-							$res=mysqli_query($con,"select * from");
+							$res=mysqli_query($con,"select * from ");
 							if(mysqli_num_rows($res)>0){
 								$html='';
 								while($row=mysqli_fetch_assoc($res)){
@@ -884,7 +1109,7 @@ include("../html/DBcon.php");
 
             </div>
         </div>
-            
+
     </div>
 
     <!-- script for chatbot -->
@@ -927,7 +1152,6 @@ include("../html/DBcon.php");
                     $('#snd-btn').click();
             });
         });
-       
     </script>
 
 
@@ -996,7 +1220,7 @@ include("../html/DBcon.php");
 
     <!-- End of Footer -->
 
-<script src="/js/app.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 
 </html>

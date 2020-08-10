@@ -70,20 +70,26 @@ include("DBcon.php");
 
         }
 
-        .top {
+          .allcontent {
             position: relative;
-            top: 120px;
-
+            top: 150px;
         }
 
-        .container {
-            background-color: white;
+        ul {
+            list-style: none;
         }
-
-        .added {
-            color: green;
+        .added{
             display: none;
         }
+        
+        @media only screen and (max-width: 1023px) {
+            .footer-content{
+                position: relative;
+                top: 140px;
+            }
+        }
+        
+        
     </style>
 
 </head>
@@ -135,133 +141,60 @@ include("DBcon.php");
 
 
 
-            <div class="container">
-                <form action="add_product.php" method="post" onsubmit="return validate()" class="form-group bg-light p-3 m-5 rounded" enctype="multipart/form-data">
-                    <div class="row top">
+      <div class="allcontent">
+                <h3>Add your Product</h3>
+                <hr>
 
-
-                        <div class="col-lg-12">
-                           <h3>Add your product</h3>
-                           <hr>
-                            <div class="row">
-                               
-                                <div class="col-lg-4 offset-lg-2">
-                                    <div class="table-responsive-sm">
-
-                                        <table class="table table-borderless">
-                                            <thead>
-                                                <tr>
-
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td> </td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td>
-                                                        <label for="p_name">Product Name*</label><br>
-                                                        <input type="text" placeholder="Enter Product Name" class="form-control mb-4" name="p_name" id="p_name"></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td>
-                                                        <label for="p_location">Product location*</label><br>
-                                                        <input type="text" placeholder=" Enter Product Location" class="form-control mb-4" name="p_location" id="p_location">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td>
-                                                        <label for="desc">Description*</label><br>
-                                                        <textarea name="Desc" placeholder="Description:" rows="5" id="desc" cols="40"></textarea>
-                                                    </td>
-                                                </tr>
-
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="table-responsive-sm">
-                                        <table class="table table-borderless">
-                                            <thead>
-                                                <tr>
-
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td> </td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td>
-                                                        <label for="p_expiry">Bidding Expiry Date*</label><br>
-                                                        <input type="date" placeholder="Bidding Expiry Date?" class="form-control mb-4" name="p_date" id="p_expiry"></td>
-                                                    <td></td>
-                                                </tr>
-
-                                                <tr>
-
-                                                    <td>
-                                                        <label for="p_price">Starting Price*</label><br>
-                                                        <input type="number" placeholder="Enter Product Intial price" class="form-control mb-4" name="p_price" id="p_price" style="width:270px">
-
-                                                    </td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td>
-                                                        <label for="p_weight">Product Weight*</label><br>
-                                                        <input type="number" placeholder="Enter your Product weight in KG" class="form-control mb-4" name="p_weight" id="p_weight">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td>
-
-
-                                                        <input type="file" name="file" id="file" required />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td><label class="added" id="added">Product added!</label>
-                                                        <input type="submit" class="btn btn-block btn-success mt-3" name="submit" value="submit">
-
-
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>
-
-                                                    </td>
-                                                </tr>
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="container-fluid">
+  <form action="" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                        <div class="col-lg-4 offset-lg-2">
+                            <ul>
+                                <li><label for="p_name">Product Name*</label><br>
+                                    <input type="text" placeholder="Enter Product Name" class="form-control" name="p_name" id="p_name">
+                                </li>
+                                <li>
+                                    <label for="p_location">Product location*</label><br>
+                                    <input type="text" placeholder=" Enter Product Location" class="form-control" name="p_location" id="p_location">
+                                </li>
+                                <li>
+                                    <label for="desc">Description*</label><br>
+                                    <textarea name="Desc" placeholder="Description:" rows="5" id="desc" cols="40"></textarea>
+                                </li>
+                            </ul>
                         </div>
+                        <div class="col-lg-4">
+                            <ul>
+                                <li>
+                                    <label for="p_expiry">Bidding Expiry Date*</label><br>
+                                    <input type="date" placeholder="Bidding Expiry Date?" class="form-control" name="p_date" id="p_expiry">
+                                </li>
+                                <li>
+                                    <label for="p_price">Starting Price*</label><br>
+                                    <input type="number" placeholder="Enter Product Intial price" class="form-control" name="p_price" id="p_price" style="width:270px">
+                                </li>
+                                <li>
+                                    <label for="p_weight">Product Weight*</label><br>
+                                    <input type="number" placeholder="Enter your Product weight in KG" class="form-control" name="p_weight" id="p_weight">
+                                </li>
+                                <li>
+                                    <input type="file" name="file" id="file" required />
+                                </li>
+                                <li>
+                                    <label class="added" id="added">Product added!</label>
+                                    <input type="submit" class="btn btn-block btn-success" name="submit" value="submit">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+  </form>
+                </div>
 
-                        <?php 
+            </div>
 
 
-      
-
-    
-    if(isset($_POST['submit'])){
+<?php 
+              if(isset($_POST['submit'])){
         
         
         $p_name = $_POST['p_name'];
@@ -327,16 +260,6 @@ include("DBcon.php");
 
 
 
-                    </div>
-                </form>
-            </div>
-
-
-
-
-
-
-
         </div>
     </div>
 
@@ -351,7 +274,7 @@ include("DBcon.php");
 
 
 
-                <div class="col-lg-6 offset-lg-3">
+                <div class="col-lg-6 offset-lg-3 foocon">
 
                     <h2 class="text-black text-center  font-weight-light text-capitalize">Farmer and trader 's Virtual Market</h2>
                     <p class="text-black text-center font-weight-light font-italic">Social media Links</p>
